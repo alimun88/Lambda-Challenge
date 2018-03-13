@@ -7,7 +7,7 @@ After writing your function uncomment the matching function reference at the bot
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
 
 function helloWorld() {
-
+  return 'Hello World!';
 }
 
 /*
@@ -19,12 +19,21 @@ function helloWorld() {
      If num is NOT divisible by 3 or 5 then return num.
 
      Example:
-             lambdaSchool(15); // returns 'Lambda School'
-             lambdaSchool(8); // returns 8
-*/
+ */
+lambdaSchool(15); // returns 'Lambda School'
+lambdaSchool(8); // returns 8
 
-function lambdaSchool() {
 
+function lambdaSchool(num) {
+  if (num % 3 === 0 && num % 5 === 0 ) {
+    return 'Lambda School';
+  } else if ( num % 3 === 0) {
+    return 'Lambda';
+  } else if (num % 5 === 0) {
+    return 'School';
+  } else {
+    return num;
+  }
 }
 
 /*
@@ -38,8 +47,15 @@ function lambdaSchool() {
              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 */
 
-function longestString() {
+function longestString(strs) {
+  let longestName = strs[0];
 
+  for (let i = 0; i < strs.length; i++) {
+    if (longestName.length < strs[i].length){
+      longestName = strs[i];
+    }
+  }
+  return longestName;
 }
 
 /*
@@ -50,6 +66,7 @@ function longestString() {
      Round off the decimals if needed and return the number.
 
      Example:
+     */
              const users = [{
                name: 'Brendan Eich',
                age: 56,
@@ -61,10 +78,11 @@ function longestString() {
                age: 81,
              }];
              computeUserAverageAge(users); // returns 62 (This number is rounded up from 61.6666)
-*/
 
-function computeUserAverageAge() {
 
+function computeUserAverageAge(users) {
+  let avgAge = users.reduce((prev, user) => prev + user.age, 0) / users.length;
+  return Math.round(avgAge);
 }
 
 module.exports = {
